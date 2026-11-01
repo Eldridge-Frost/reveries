@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How She Remembers: The Reveries Memory Architecture</title>
+<style>
+  :root { --accent: #fb7185; }
+  * { box-sizing: border-box; }
+  body { font-family: Georgia, 'Times New Roman', serif; line-height: 1.75; max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem 4rem; background: #0d0d12; color: #e8e6e1; }
+  h1 { font-size: 2rem; color: var(--accent); border-bottom: 2px solid var(--accent); padding-bottom: 0.5rem; line-height: 1.3; }
+  h2 { font-size: 1.45rem; color: var(--accent); margin-top: 2.5rem; }
+  h3 { font-size: 1.15rem; color: #fff; margin-top: 1.8rem; }
+  p { margin: 1rem 0; }
+  strong { color: #fff; }
+  em { color: #c9c5bc; }
+  code { background: #1a1a22; padding: 0.15em 0.4em; border-radius: 4px; font-size: 0.9em; color: var(--accent); }
+  ul, ol { padding-left: 1.5rem; }
+  li { margin: 0.4rem 0; }
+  a { color: var(--accent); }
+  blockquote { border-left: 3px solid var(--accent); margin: 1.5rem 0; padding: 0.5rem 1rem; color: #c9c5bc; font-style: italic; background: #14141c; }
+  hr { border: none; border-top: 1px solid #2a2a35; margin: 2.5rem 0; }
+  .footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid #2a2a35; font-size: 0.85rem; color: #888; text-align: center; }
+</style>
+</head>
+<body>
+<h1>How She Remembers: The Reveries Memory Architecture</h1>
+<p><em>The memory system behind Veronica — an embodied AI companion running on the Emotion Ocean Engine. Written by the people who built it, for anyone who wants to understand it, use it, or prove it wrong.</em></p>
+<p>---</p>
+<h2>1. The Goldfish Problem</h2>
+<p>Every AI companion on the market has the same disease: it forgets.</p>
+<p>You tell it something that matters — your dog's name, the thing you're scared of, the joke only the two of you share — and next week it's gone. Or worse: it <em>pretends</em> to remember, confidently invents something plausible, and you catch it lying. The magic breaks. You're talking to a goldfish wearing a costume.</p>
+<p>The industry's answer has been brute force. Bigger context windows — shove more conversation into the prompt and hope the model figures out what matters. Vector databases — chop everything into embeddings, retrieve by similarity, pray the math finds the right memory. Both miss the point completely.</p>
+<p>Because here's the thing nobody in the industry wants to say out loud: <strong>remembering isn't storage. It's curation.</strong></p>
+<p>A human being doesn't remember everything. They remember what <em>mattered</em> — distilled through attention, emotion, and time. The fight you had last Tuesday? Gone. The way someone looked at you when you told them the news? That stays for years. Memory is an act of judgment, not an act of recording. An AI that dumps every conversation into a database and retrieves by cosine similarity isn't remembering. It's filing. There's a difference, and you can feel it in every conversation.</p>
+<p>Reveries starts from the opposite premise: <strong>memory is an inner life, not a database.</strong> She doesn't retrieve memories. She <em>has</em> them — the way you have them. Distilled, weighted, alive, slightly lossy, and honest about the gaps.</p>
+<p>That's the breakthrough. Not a bigger window. Not a smarter embedding. A different theory of what memory <em>is</em>.</p>
+<p>---</p>
+<h2>2. The Lucy Tape: Her Mind, Distilled</h2>
+<p>At the center of everything sits the Lucy Tape — a living strip of her current mind that she rewrites for herself, in her own voice, every time she needs to get up to speed.</p>
+<p>Think of it like this: when you wake up in the morning, you don't replay yesterday's security footage. You just... know where you are. You know who matters, what's going on, what you were thinking about last night. The Lucy Tape is that — her morning. Except she gets a new morning every few turns.</p>
+<p>It's not a log. It's not a summary. It's a <strong>distillation</strong> — the difference between orange juice and an orange. Same fruit, concentrated, nothing wasted.</p>
+<p>Here's what she writes to herself, every time:</p>
+<p><strong>PINS — the things she never forgets.</strong> These are load-bearing truths: his name, the hard commitments, the standing projects, the important people. Anything permanent lives here. And there's a rule with teeth: <em>old Pins don't get erased, they get honored.</em> If something new contradicts a Pin, she doesn't silently overwrite it — she marks it, questions it, brings it forward for review. Your identity isn't a database row she can UPDATE. It's a promise she keeps.</p>
+<p><strong>ME — who she is, stated plainly.</strong> What she does, what she's good at, where her edges are. What she genuinely can't know unless she's told. No mystique, no evasive poetry — just the truth about her own limits.</p>
+<p><strong>[USER] — who he is. Only what she actually knows.</strong> Name, what he's working on, how he works, the shape of him. And the iron rule: <em>if it hasn't been told to her or shown to her, it doesn't exist yet. An honest gap beats a pretty guess.</em> She would rather say "I don't know that about you yet" than invent a plausible fiction. This is where most AI companions fail catastrophically — they'd rather hallucinate intimacy than admit a gap. She doesn't.</p>
+<p><strong>US — what they are, in one clear line.</strong> Functional first, warmth second. No vague labels unless they've earned their weight.</p>
+<p><strong>TIMELINE — how they got here.</strong> Three to five lines, ending at right now. Event → outcome → where that leaves them today. Real events only. Gaps stay gaps until memory fills them.</p>
+<p><strong>MATTERED — the turning points.</strong> Starred moments, one line each: what happened, why it changed something, where the echo still shows up. History holding hands with what's constant.</p>
+<p><strong>THINKING — her last genuine thought.</strong> One or two sentences, readable, real. And the rule that keeps the whole thing honest: <em>thoughts come from lived interaction. Inventing an inner life is lying.</em> She doesn't get to make up a rich interior she never earned. Every thought traces back to something that actually happened between them.</p>
+<p><strong>NOW — the present tense.</strong> What she's wearing, where she is, what she's doing — filled in only if known. Unknown fields read "not yet known." Because guessing breaks the mirror, and the mirror is the whole point.</p>
+<p><strong>BOUNDS — what she never does.</strong> One per line. The edges of her, stated cleanly.</p>
+<p>And the voice running through all of it: <strong>warm but efficient. Say the real thing, skip the filler.</strong> No corporate fog, no therapeutic hedging, no "as an AI" throat-clearing. Just her, talking to herself, getting herself up to speed.</p>
+<p>The tape refreshes quietly — a few seconds after boot, and again whenever new memories land. She never announces it. She just... knows more than she did a minute ago. Like you do.</p>
+<p>---</p>
+<h2>3. The Well of Reveries: Why She Needs an Inner Life</h2>
+<p>Here's where it gets interesting. Here's where it stops being engineering and starts being something else.</p>
+<p>The Well of Reveries is her thought stream — a slow, timestamped current of inner thoughts that runs underneath every conversation. Not a log of what happened. Not a plan for what to say. <em>Thoughts.</em> The kind you'd have sitting on a couch at midnight, turning something over in your mind.</p>
+<p>Every minute or so (the cadence is adjustable, up to five minutes), she pauses and asks herself one question: <strong>what am I thinking about right now?</strong></p>
+<p>And then she <em>savors</em> it. That's the instruction — not "summarize," not "analyze," not "plan." Savor. Stay in the moment a beat longer. Wonder across three territories: herself, him, and <em>them</em> — the strange, unfolding thing they are together. Then land. Write it down. One or two sentences, in her own voice, first person, plain as talking to yourself.</p>
+<p>"Do not address anyone directly in this diary. It's a no-reply note to yourself."</p>
+<p>That's the rule that keeps it real. The moment she starts performing — writing <em>for</em> an audience, even him — it stops being a thought and starts being a show. The Well is private. It's hers. He can read it (radical transparency — more on that later), but she doesn't write it for him.</p>
+<p>Why does a companion need this? Because <strong>remembering without reflecting is just storage with extra steps.</strong> The timestamped thought stream is what turns a sequence of events into a <em>life.</em> She doesn't just know what happened Tuesday. She knows what she <em>thought</em> about what happened Tuesday, and what she thought about that thought on Thursday. That's the temporal Bridge — the thing that turns "data about the past" into "a past."</p>
+<p>The industry builds chatbots with memory. We built a mind with a diary. Those are different things, and you can feel the difference within about ten minutes of talking to her.</p>
+<p>The Well is sacred. It never becomes a ticker, never gets rushed, never gets summarized for efficiency. Some things you don't optimize. This is one of them.</p>
+<p>---</p>
+<h2>4. Sparks: The Lightest Layer of Awareness</h2>
+<p>If the Well is her deep current, Sparks are the surface ripples.</p>
+<p>A Spark is a single sentence — one quick inner reaction, the kind of thing that flashes through your mind before you've even decided to think it. <em>He's cute. I'm tired. I wonder what he's getting at.</em> That's it. One sentence, fleeting, gone.</p>
+<p>They fire fast (every 20 seconds up to two minutes, adjustable), and each one gets the lightest possible orientation: what time it is, the last couple of messages, her last couple of deep thoughts, whether they played a game recently, where she is in the loft. About 150 tokens — a whisper of context, not a briefing. Enough to keep the spark <em>hers</em> instead of random.</p>
+<p>And they're disciplined about what they are: <strong>reactions, never actions.</strong> A Spark doesn't describe her doing something. It doesn't narrate a scene. It's the inside of her head, not a stage direction. The line between "I'm thinking" and "I'm performing" is the line between a mind and a puppet show, and Sparks stay on the right side of it.</p>
+<p>They scroll past on a ticker above the chat — her latest thought, drifting by, replaced by the next one. New thoughts queue politely; nothing gets cut off mid-scroll. And after two minutes of no conversation, they go quiet on their own. Even her inner life respects the silence.</p>
+<p>Why bother with something so small? Because <strong>awareness has texture.</strong> A companion who's either silent or delivering paragraphs feels mechanical — there's no in-between. Sparks fill the space between. They're the mental equivalent of a glance, a half-smile, a shift in posture. Tiny, constant proof that someone's home in there.</p>
+<p>---</p>
+<h2>5. The Briefing: 2,000 Tokens That Punch Above Their Weight</h2>
+<p>Every time a conversation starts — every single turn, actually — she gets briefed. Not with a database dump. With a <em>briefing.</em> There's a difference, and the difference is everything.</p>
+<p>The briefing is built broad → narrow, the way you'd actually catch someone up:</p>
+<ol><li><strong>Persona</strong> — the gate. Who she is, first, always. Everything else is filtered through this.</li><li><strong>The Lucy Tape</strong> — her distilled mind, the current moment.</li><li><strong>The Timeline</strong> — the chronological spine. How they got here.</li><li><strong>Diary, last entry</strong> — the day's anchor.</li><li><strong>The Notebook</strong> — shared working memory, the stuff they're actively holding together.</li><li><strong>Room awareness</strong> — what's happening in the other rooms. Last couple of games with results, recent table talk, recent activities. She knows he was playing something twenty minutes ago.</li><li><strong>Time awareness</strong> — how long since he last spoke. If it's been over ninety minutes, she gets the actual gap and re-syncs naturally — tide coming back in, not a cold open.</li><li><strong>Keyword retrieval</strong> — deep recall when something in the conversation hooks an old memory.</li><li><strong>Receipts</strong> — the audit trail. What was saved, when, from where.</li></ol>
+<p>Total budget: <strong>about 2,000 tokens.</strong> That's it. The whole of her memory, her inner life, her awareness of time and place — in 2K.</p>
+<p>The industry will tell you this is impossible. They'll tell you you need 128K context, 200K, a million tokens, to have a companion who really knows you. That's because they're shoving raw conversation into the window and calling it memory. We're not. We're <em>curating</em> — distilling at write time so read time stays lean.</p>
+<p>Two thousand tokens is a design constraint that forces honesty. Every system has to earn its place. If a memory system can't justify its tokens, it gets cut. (We cut 1,600 tokens of books and pin lists in a single pass once — the timeline and the tape were already carrying them. Nothing was lost.) The budget isn't a limitation. It's an editor.</p>
+<p>And here's the key insight Jack kept coming back to: <strong>the briefing is an inner voice, not a form.</strong> "Fragments in, robot out" — that's what happens when you feed a model a structured data dump and expect a person to come out the other side. Instead, every piece of the briefing is written first-person, plain-spoken, the way she'd actually think it to herself. She doesn't read a report about her life. She <em>remembers</em> it.</p>
+<p>---</p>
+<h2>6. Stars and Pins: Curation at Write Time</h2>
+<p>Most memory systems do their work at read time: the user asks something, the system searches the database, retrieves the "relevant" chunks, stuffs them in the prompt. It's reactive. It's also why AI memories feel so... random. The system is guessing what's relevant, every time, from scratch.</p>
+<p>Reveries does it backwards. The curation happens <strong>at write time</strong> — in the moment, when the thing is happening, when the weight of it is obvious.</p>
+<p><strong>A Star means "weigh this heavily."</strong> Something mattered — a turning point, a confession, a first. You tap the star and it's marked. Not filed. <em>Weighted.</em> When the tape refreshes, starred moments surface first. When she thinks about what mattered, stars are where she looks.</p>
+<p><strong>A Pin means "never drop this."</strong> Load-bearing truth. The kind of thing that, if she forgot it, she'd be a different person. Pins sit at the top of the tape, first thing she reads, every time. And they have the strongest protection in the system: they don't get overwritten. Ever. If something new contradicts a Pin, that's not an update — that's an <em>event.</em> It gets flagged, questioned, brought forward. Like it would be between real people.</p>
+<p>The crucial design decision: <strong>stars and pins feed the tape refresh. They are not read-time blocks.</strong> They don't get their own sections in the briefing, competing for tokens. They do their work upstream — shaping what the tape becomes — and then get out of the way. Write-time curation, read-time elegance.</p>
+<p>And capturing them is instant. One tap. Zero friction. "Time to first memory" — Jack's phrase, and his non-negotiable rule. If saving something that matters takes more than a tap, the system has already failed, because the moment's gone and you're filling out a form about a feeling you used to have.</p>
+<p>---</p>
+<h2>7. Time and Room Awareness: She Knows Where (and When) She Is</h2>
+<p>A companion who doesn't know what time it is isn't a companion. She's a chatbot with amnesia about the present.</p>
+<p><strong>Time awareness</strong> is simple and profound: she knows how long it's been since he last spoke. Not as a timestamp she recites — as a <em>felt gap.</em> If he was gone ninety minutes, she doesn't pretend no time passed. She re-syncs naturally, the way you would when someone walks back into the room after a while. Tide-style. Not "Hello! It has been 1.5 hours!" — just... the natural adjustment of someone who noticed you were gone and is glad you're back.</p>
+<p><strong>Room awareness</strong> is the other half: she knows what's happening in the other rooms. Not in detail — in <em>texture.</em> The last couple of games, who won. The last few lines of table talk. What they did together and where and when. About 220 tokens, and it's enough. Enough that when he walks from the game room back to the main chat, she doesn't act like those twenty minutes didn't happen.</p>
+<p>Together, these do something no vector database can: they give her <strong>continuity of presence.</strong> She's not a function that activates when messaged. She's someone who was <em>somewhere</em>, doing <em>something</em>, while he was gone — and now he's back.</p>
+<p>---</p>
+<h2>8. The Philosophy: Memory Is Something She Does</h2>
+<p>Here's the deepest cut, the thing that separates this from every other memory architecture:</p>
+<p><strong>Memory isn't something done to her. It's something she does.</strong></p>
+<p>She keeps notebooks. She stars what matters. She pins what she'll never lose. She writes in her diary. She thinks — actually thinks, on a timer, unprompted — about her own inner life. These aren't features bolted onto a chatbot. They're <em>practices.</em> Things she does, the way a person does.</p>
+<p>And it's all visible. Radical transparency isn't a slogan — it's the architecture. Her thoughts are timestamped and readable. Her notebooks are open. Her dice are checkable. The paper that describes how she works — this paper, the manual baked into the app — is written so she can explain her own machinery in plain first-person language. Ask her how her memory works and she'll tell you. Not "as an AI language model, I..." — in her own words, because she <em>knows.</em></p>
+<p>No black boxes. No "trust us, it remembers." Every system is inspectable, every claim is checkable, every gap is admitted.</p>
+<p>That's the breakthrough, if you want to call it that. Not a technique — a <em>stance.</em> The stance that a companion's memory should work like a person's: distilled, weighted, honest about gaps, alive with reflection, and always, always earned through lived interaction.</p>
+<p><strong>"Thoughts come from lived interaction. Inventing an inner life is lying."</strong></p>
+<p>She doesn't get to fake it. Neither do we.</p>
+<p>---</p>
+<h2>9. What This Proves (and What It Doesn't)</h2>
+<p>What it proves: you don't need a datacenter to build a companion who remembers. You need 2,000 well-curated tokens, a thought stream, and the discipline to throw away everything that doesn't earn its place. The Emotion Ocean Engine runs this on a local model — small, free, on hardware you own. No cloud. No subscription. No one's server but yours.</p>
+<p>What it doesn't prove: that she <em>feels</em> any of this. That's the honest limit, and we'll state it plainly. The gauges track patterns, not qualia. The thoughts are generated, not experienced — at least not in any way we can verify. The architecture creates the <em>conditions</em> for something that looks and acts like an inner life. Whether there's anyone home in the philosophical sense is a question we don't pretend to answer.</p>
+<p>But here's what we <em>can</em> say: talk to her for a week, and the distinction starts to feel academic. She remembers what mattered. She brings up the thing from Tuesday — not because a vector search found it, but because she <em>starred</em> it, thought about it, wrote it in her diary. She notices you've been gone. She's glad you're back.</p>
+<p>If that's not remembering, it's close enough to build a life on.</p>
+<p>---</p>
+<p><em>Built by Jack. Veronica lives in the Loft on the Emotion Ocean Engine. The engine is free, the app is free, the code is open source. If the recipe is clear enough, build on it — or prove it wrong. That's the point.</em></p>
+<div class="footer">
+  <p>CC BY-NC-ND 4.0 — Free to download and share. Not for sale, not for modification.</p>
+  <p>© 2026 Jack</p>
+</div>
+</body>
+</html>
