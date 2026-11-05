@@ -15534,8 +15534,8 @@ function init(){
     gbt.disabled = false;
     ginp.focus();
   };
-  /* X.57 — quote button: wraps selection or current line in quotes for mic dictation */
-  $('quoteBtn').onclick = ()=>{
+  /* X.57 — quote button: wraps selection or current line in quotes for mic dictation (guarded — button removed from bar) */
+  const _qb = $('quoteBtn'); if(_qb) _qb.onclick = ()=>{
     const inp = $('chatInput'); if(!inp) return;
     const v = inp.value, s = inp.selectionStart ?? v.length, e = inp.selectionEnd ?? v.length;
     if(s !== e){
