@@ -9,7 +9,7 @@
 :root{
   color-scheme:dark;
   --bg:#0a0e14; --bg2:#0e1420; --card:rgba(255,255,255,.045); --card2:rgba(255,255,255,.07);
-  --line:rgba(255,255,255,.09); --txt:#e8eef6; --dim:#c3cfdd; --faint:#93a3b8;
+  --line:rgba(255,255,255,.09); --txt:#e8eef6; --dim:#a8d8e8; --faint:#5aa2e8;
   --gold:#e8b64c; --blue:#5aa2e8; --green:#5ce89a; --red:#e85a6a; --violet:#a97ef0;
   --accent:var(--gold);
 }
@@ -52,7 +52,7 @@ header{
 /* action | spot: a clear divider so you never have to parse the sentence */
 .rspot{font-size:9px;color:var(--accent);border-left:1px solid var(--line);padding-left:8px;white-space:nowrap;flex:none;max-width:40%;overflow:hidden;text-overflow:ellipsis}
 /* timestamps: just a breath darker than white (~18%) — legible, never "don't look at me" gray */
-.revtRow .rdt{color:#ccd4de;font-size:9px;white-space:nowrap;flex:none;}
+.revtRow .rdt{color:#a8d8e8;font-size:9px;white-space:nowrap;flex:none;}
 .revtRow.wrap{flex-wrap:wrap;}
 .revtRow.wrap .rdt{white-space:normal;flex:1 1 100%;text-align:left;color:var(--dim);margin-top:2px;}
 /* X.128 — Engine rows wrap like prose, never per-letter, never past the card.
@@ -114,7 +114,7 @@ header{
 .hrow{flex-wrap:wrap}
 .hrow .rdt{white-space:nowrap}
 .hrow .hchips{flex-basis:100%;justify-content:flex-end;margin-top:2px}
-.gdelta{font-size:9px;font-weight:700;color:#ccd4de} /* deltas are neutral info: bright, never faded */
+.gdelta{font-size:9px;font-weight:700;color:#a8d8e8} /* deltas are neutral info: bright, never faded */
 .rdelta{min-height:14px;font-size:9px;text-align:center}
 .rwhere{font-size:9px;color:var(--dim);margin-top:4px}
 .scoreTotal{border-top:1px solid var(--line);margin-top:8px;padding-top:8px;font-weight:700;}
@@ -171,6 +171,7 @@ nav#tabs{
 @keyframes ttScroll{0%{transform:translateX(100%)}100%{transform:translateX(-100%)}}
 .thoughtTicker .ttBtn{flex:none}
 .thoughtTicker{transition:opacity .8s ease}
+#sysPill{display:none;align-self:center;max-width:92%;margin:0 auto 6px;background:rgba(255,255,255,.92);color:#111;font-size:12px;border:1px dashed rgba(0,0,0,.2);border-radius:99px;padding:6px 14px;text-align:center;box-shadow:0 2px 12px rgba(0,0,0,.25);}
 .thoughtTicker.fading{opacity:0;pointer-events:none}
 /* send pill — holds while her reply generates */
 #sendPill{position:fixed;left:50%;transform:translateX(-50%) scale(.9);bottom:calc(var(--tabbar-h,64px) + 76px);z-index:60;background:rgba(20,12,18,.92);border:1px solid rgba(251,113,133,.4);color:#fda4af;font-size:11px;font-weight:700;padding:7px 16px;border-radius:99px;opacity:0;pointer-events:none;transition:opacity .18s ease,transform .18s ease;box-shadow:0 4px 18px rgba(0,0,0,.5)}
@@ -212,7 +213,7 @@ input[type=range]{width:100%;accent-color:var(--accent);}
 #chatLog{display:flex;flex-direction:column;gap:10px;margin-bottom:12px;}
 .msg{max-width:92%;padding:10px 14px;border-radius:8px;white-space:pre-wrap;word-wrap:break-word;line-height:1.5;}
 .msg.user{align-self:flex-end;background:#2a3a4a;color:#e8eef4;border:1px solid #3a4a5a;}
-.msg.ai{align-self:flex-start;background:#1a1e26;color:#d8dee8;border:1px solid #2a3038;}
+.msg.ai{align-self:flex-start;background:#1a1e26;color:#a8d8e8;border:1px solid #2a3038;}
 /* X.151 — chat text controls: size modest on purpose (11–16px, phone-safe),
    one text colour for both bubbles, bold/italic toggles, and an outline drawn
    as a shadow halo (true stroke thins letters on Android and hurts readability). */
@@ -221,7 +222,7 @@ body.chatBold #chatLog .msg.ai,body.chatBold #chatLog .msg.user{font-weight:700}
 body.chatItalic #chatLog .msg.ai,body.chatItalic #chatLog .msg.user{font-style:italic}
 body.chatOutlineSoft #chatLog .msg.ai,body.chatOutlineSoft #chatLog .msg.user{text-shadow:0 1px 2px rgba(0,0,0,.9),0 0 4px rgba(0,0,0,.7)}
 body.chatOutlineStrong #chatLog .msg.ai,body.chatOutlineStrong #chatLog .msg.user{text-shadow:-1px 0 0 rgba(0,0,0,.95),1px 0 0 rgba(0,0,0,.95),0 -1px 0 rgba(0,0,0,.95),0 1px 0 rgba(0,0,0,.95),0 2px 4px rgba(0,0,0,.9)}
-.msg .tagline{font-size:9px;color:#ccd4de;margin-bottom:4px;letter-spacing:.5px;display:flex;align-items:center;}
+.msg .tagline{font-size:9px;color:#a8d8e8;margin-bottom:4px;letter-spacing:.5px;display:flex;align-items:center;}
 .actsbtn{margin-left:auto;background:none;border:none;color:var(--faint);font-size:10px;cursor:pointer;padding:0 4px;line-height:1;}
 .actsbtn:hover{color:var(--txt);}
 .actsrow{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;}
@@ -431,9 +432,9 @@ body.noActions .actsrow,body.noActions .abar{display:none!important}
 .feedItem .ttl{font-weight:600;margin:4px 0;font-size:11px;}
 .feedItem .ttl a{color:var(--txt);text-decoration:none;}
 .feedItem .cmt{border-left:2px solid var(--accent);padding:6px 10px;margin:8px 0;font-size:10px;
-  color:#d5dde8;background:rgba(255,255,255,.02);border-radius:0 10px 10px 0;}
+  color:#a8d8e8;background:rgba(255,255,255,.02);border-radius:0 10px 10px 0;}
 .feedItem .cmt .who{font-size:9px;color:var(--accent);margin-bottom:2px;}
-.feedItem .ts{font-size:9px;color:#ccd4de;margin-top:6px;}
+.feedItem .ts{font-size:9px;color:#a8d8e8;margin-top:6px;}
 .diaryEntry{background:linear-gradient(160deg,rgba(232,182,76,.06),rgba(255,255,255,.02));
   border:1px solid var(--line);border-radius:14px;padding:12px;margin-bottom:10px;}
 .diaryEntry .dts{font-size:12px;color:#e8b64c;letter-spacing:.5px;margin-bottom:6px;}
@@ -513,8 +514,8 @@ body.noActions .actsrow,body.noActions .abar{display:none!important}
    var(--rose-soft) -> rgba(251,113,133,.14)
    var(--rose-ink) -> #2a0f16
    var(--rose) -> #fb7185
-   var(--text-dim) -> #d3bfc9
-   var(--text-mute) -> #96818c
+   var(--text-dim) -> #a8d8e8
+   var(--text-mute) -> #5aa2e8
    var(--hairline) -> rgba(255,255,255,.07)
    var(--border) -> rgba(251,113,133,.16)
    var(--radius) -> 16px
@@ -523,20 +524,20 @@ body.noActions .actsrow,body.noActions .abar{display:none!important}
 .ticker{background:linear-gradient(180deg,#151016,#0d0a10);border:1px solid rgba(251,113,133,.16);border-radius:16px;padding:15px 16px 13px;margin-top:18px}
 .ticker-top{display:flex;align-items:flex-start;gap:10px;flex-wrap:wrap}
 .ticker-sym{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:11px;font-weight:500;letter-spacing:.14em;color:#fda4af;border:1px solid rgba(251,113,133,.35);background:rgba(251,113,133,.07);padding:4px 8px;border-radius:6px}
-.ticker-name{font-size:13px;color:#d3bfc9;font-weight:700;margin-top:5px}
+.ticker-name{font-size:13px;color:#a8d8e8;font-weight:700;margin-top:5px}
 .ticker-price{margin-left:auto;text-align:right}
 .ticker-price b{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:27px;font-weight:500;letter-spacing:-.02em;color:#fff;display:block;line-height:1}
-.ticker-price span{font-size:11px;color:#96818c;font-weight:700;display:block;margin-top:4px;letter-spacing:.05em;text-transform:uppercase}
+.ticker-price span{font-size:11px;color:#5aa2e8;font-weight:700;display:block;margin-top:4px;letter-spacing:.05em;text-transform:uppercase}
 .ticker-chg{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:12.5px;font-weight:500;padding:5px 9px;border-radius:7px;white-space:nowrap}
 .ticker-chg.up{color:#34D399;background:rgba(52,211,153,.12);border:1px solid rgba(52,211,153,.3)}
 .ticker-chg.down{color:#F87171;background:rgba(248,113,113,.10);border:1px solid rgba(248,113,113,.3)}
 .ticker-stats{display:flex;gap:6px;flex-wrap:wrap;margin:13px 0 4px}
 .ticker-stat{flex:1 1 100px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:8px 10px}
-.ticker-stat span{font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;color:#96818c;font-weight:800;display:block}
+.ticker-stat span{font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;color:#5aa2e8;font-weight:800;display:block}
 .ticker-stat b{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:14.5px;font-weight:500;color:#fff;display:block;margin-top:3px}
-.ticker-stat b.rosev{color:#fb7185} .ticker-stat b.grayv{color:#a8a29e}
+.ticker-stat b.rosev{color:#fb7185} .ticker-stat b.grayv{color:#5aa2e8}
 .ticker-readout{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:12px;color:#f3cdd6;background:rgba(251,113,133,.07);border:1px solid rgba(251,113,133,.18);border-radius:9px;padding:8px 11px;margin:10px 0 2px;min-height:34px;line-height:1.5}
-.ticker-legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:9px;font-size:11.5px;color:#d3bfc9;font-weight:700}
+.ticker-legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:9px;font-size:11.5px;color:#a8d8e8;font-weight:700}
 .ticker-legend i{display:inline-block;width:14px;height:4px;border-radius:99px;margin-right:6px;vertical-align:middle}
 .ticker-legend .barsw{width:9px;height:9px;border-radius:2px}
 svg[id$="tickerChart"]{width:100%;height:auto;display:block}
@@ -544,11 +545,11 @@ svg[id$="tickerChart"]{width:100%;height:auto;display:block}
 [id$="tickerChart"] rect[data-ti]:hover{opacity:1 !important;stroke:#fff;stroke-width:.6}
 .ticker-controls{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:12px 0 2px}
 .ticker-seg{display:flex;flex-wrap:wrap;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:99px;padding:3px;gap:2px}
-.ticker-seg button{padding:7px 13px;border-radius:99px;background:transparent;color:#d3bfc9;font-weight:800;font-size:12px;transition:.15s}
+.ticker-seg button{padding:7px 13px;border-radius:99px;background:transparent;color:#a8d8e8;font-weight:800;font-size:12px;transition:.15s}
 .ticker-seg button:hover{color:#fff}
 .ticker-seg button.active{background:#fb7185;color:#2a0f16}
 .ticker-mas{display:flex;gap:6px;margin-left:auto}
-.ma-toggle{padding:7px 11px;border-radius:99px;background:transparent;border:1px solid rgba(255,255,255,.07);color:#96818c;font-size:12px;font-weight:800;transition:.15s;display:inline-flex;align-items:center;gap:6px}
+.ma-toggle{padding:7px 11px;border-radius:99px;background:transparent;border:1px solid rgba(255,255,255,.07);color:#5aa2e8;font-size:12px;font-weight:800;transition:.15s;display:inline-flex;align-items:center;gap:6px}
 .ma-toggle i{width:12px;height:3px;border-radius:99px;display:inline-block;opacity:.35}
 .ma-toggle.on{color:#fff}
 .ma-toggle.on i{opacity:1}
@@ -587,7 +588,7 @@ svg[id$="tickerChart"]{width:100%;height:auto;display:block}
 /* thoughts: the dashed draft look goes; quiet solid card, airier text */
 #tab-mind .thought{background:rgba(255,255,255,.028);border:1px solid var(--line);
   border-radius:14px;padding:12px 14px;margin-bottom:10px;font-size:11px;
-  line-height:1.55;color:#cfd9e6;}
+  line-height:1.55;color:#a8d8e8;}
 #tab-mind .thought .tts{display:block;margin-top:6px;font-size:9px;color:var(--faint);
   letter-spacing:.4px;}
 /* diary: keep the gold/rose identity, refine rhythm */
@@ -613,7 +614,7 @@ svg[id$="tickerChart"]{width:100%;height:auto;display:block}
   --bg:#0d0a10; --bg2:#141017;
   --card:rgba(251,113,133,.05); --card2:rgba(251,113,133,.09);
   --line:rgba(251,113,133,.16);
-  --txt:#faf3f6; --dim:#d3bfc9; --faint:#96818c;
+  --txt:#faf3f6; --dim:#a8d8e8; --faint:#5aa2e8;
   --accent:#fb7185; --gold:#fb7185;
   --font-display:'Newsreader',Georgia,'Times New Roman',serif;
 }
@@ -760,6 +761,7 @@ nav#tabs button.on .ico{filter:drop-shadow(0 0 6px #fb7185);}
             <div class="ttScroll"><span class="ttText" id="ttText"></span></div>
             <button class="btn ttBtn" style="padding:4px 10px;font-size:11px" onclick="sendLastThoughtsToChat()" title="Send her last 2 thoughts into chat to talk about">💬 Last 2</button>
           </div>
+          <div id="sysPill" style="display:none"></div>
           <div id="sendPill">Sending…</div>
           <div id="edgeFlash"></div>
           <script>
@@ -4125,7 +4127,7 @@ function x126RenderTape(){
     else{
       html = '<div style="max-height:400px;overflow-y:auto;white-space:pre-wrap;font-size:14px;line-height:1.6;color:#f5f0f5;border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:rgba(255,255,255,.02)">' + md(tape.text) + '</div>';
       if(tape.sinceEdit) html += '<div style="max-height:200px;overflow-y:auto;white-space:pre-wrap;margin-top:8px;font-size:14px;line-height:1.6;color:#f5f0f5;border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:rgba(255,255,255,.02)"><b>Since your last edit:</b>\n' + md(tape.sinceEdit) + '</div>';
-      html += '<div style="margin-top:8px;font-size:12px;color:#e8d5e0;line-height:1.5">≈ ' + toks + ' tokens · updated ' + esc(timeAgo(tape.ts)) + (tape.edited ? ' · <b>Edited by Jack — auto-refresh appends, never overwrites</b>' : '') + (tape.first ? ' · First tape' : '') + (tape._wasCut ? ' · <b style="color:#f59e0b">✂️ hit the token limit — trimmed to last complete sentence</b>' : '') + '</div>';
+      html += '<div style="margin-top:8px;font-size:12px;color:#a8d8e8;line-height:1.5">≈ ' + toks + ' tokens · updated ' + esc(timeAgo(tape.ts)) + (tape.edited ? ' · <b>Edited by Jack — auto-refresh appends, never overwrites</b>' : '') + (tape.first ? ' · First tape' : '') + (tape._wasCut ? ' · <b style="color:#f59e0b">✂️ hit the token limit — trimmed to last complete sentence</b>' : '') + '</div>';
       if(tape.sources && tape.sources.length) html += '<div style="margin-top:10px;max-height:180px;overflow-y:auto;font-size:13px;line-height:1.6;color:#f0e6ee;border-left:3px solid #fb7185;padding-left:10px"><b style="color:#fb7185">Sources:</b><br>' + tape.sources.map(ss=>esc(ss.kind) + ' ' + esc(ss.date) + ' — ' + esc(ss.label)).join('<br>') + '</div>';
     }
     el.innerHTML = html;
@@ -4973,7 +4975,7 @@ function renderChat(){
   comp.chat.slice(-60).forEach((m, si)=>{
     const idx = start + si;
     const d = document.createElement('div');
-    if(m.role === 'sys'){ d.className = 'msg sys'; d.textContent = m.content; }
+    if(m.role === 'sys'){ return; } /* sys messages live in the pill now, not inline */
     else if(m.role === 'ocean'){ d.className = 'msg ocean'; d.setAttribute('role','note'); d.setAttribute('aria-label','Ocean narration'); d.textContent = m.content; }
     else{
       d.className = 'msg ' + (m.role==='user'?'user':'ai');
@@ -5616,11 +5618,25 @@ function detectHimRoom(text){
   if(/\bcouch|living room|sofa\b/.test(t)) return 'couch';
   return null;
 }
+/* System messages as a floating pill below Sparks — not inline in chat */
+let _sysPillTimer = null;
+function showSysPill(text){
+  try{
+    const pill = document.getElementById('sysPill');
+    if(!pill) return;
+    pill.textContent = text;
+    pill.style.display = 'block';
+    if(_sysPillTimer) clearTimeout(_sysPillTimer);
+    _sysPillTimer = setTimeout(()=>{ pill.style.display = 'none'; }, 6000);
+  }catch(e){}
+}
 function pushChat(role, content, mode, ghost, extra){
   /* his input restarts the spark timer — her replies don't, so the ticker
      can't loop into oblivion while he just reads. Fidget or send to restart. */
   try{ if(role === 'user') _lastChatActivity = Date.now(); }catch(e){}
   const comp = C(); if(!comp) return;
+  /* sys messages go to the floating pill, not the chat log */
+  if(role === 'sys'){ showSysPill(content); return; }
   const msg = {role, content, mode: mode||S.mode, ts: now(), ghost: !!ghost};
   if(extra && extra.wasCut){ msg._wasCut = true; msg._maxTok = extra.maxTok || null; }
   comp.chat.push(msg);
@@ -10709,7 +10725,7 @@ function tkKindOf(place) {
   if (place === 'World') return 'world';
   return 'other';
 }
-const TK_ROSE = '#fb7185', TK_GRAY = '#a8a29e', TK_UP = '#34D399', TK_DN = '#F87171';
+const TK_ROSE = '#fb7185', TK_GRAY = '#5aa2e8', TK_UP = '#34D399', TK_DN = '#F87171';
 const tkHosts = {}; /* prefix -> mount host; '' = Gauges tab, 'h' = chat header panel */
 function tkRenderAll(){ Object.keys(tkHosts).forEach(k => { try { tkRenderTicker(k); } catch (_) {} }); }
 
@@ -10843,7 +10859,7 @@ function tkRenderTicker(p) {
   const svg = host.querySelector('#' + p + 'tickerChart'); if (!svg) return;
   const view = tkSeries(), vals = view.vals, N = vals.length;
   if(!view.real && !view.demo){
-    svg.innerHTML = '<text x="280" y="110" text-anchor="middle" font-size="13" fill="#96818c">No runs in this view yet</text>' +
+    svg.innerHTML = '<text x="280" y="110" text-anchor="middle" font-size="13" fill="#5aa2e8">No runs in this view yet</text>' +
       '<text x="280" y="132" text-anchor="middle" font-size="11" fill="#6b5a63">Chat with her, or tap Backfill from history in Settings</text>';
     return;
   }
@@ -10859,7 +10875,7 @@ function tkRenderTicker(p) {
   for (let g = 0; g <= 4; g++) {
     const v = yMax * g / 4, y = Y(v);
     s += '<line x1="' + padL + '" y1="' + y + '" x2="' + (W - padR) + '" y2="' + y + '" stroke="rgba(255,255,255,' + (g === 0 ? '.18' : '.06') + ')" stroke-width="1"/>' +
-      '<text x="' + (padL - 7) + '" y="' + (y + 3.5) + '" text-anchor="end" font-size="9.5" fill="#96818c" font-family="JetBrains Mono,monospace">' + (g === 0 ? '0' : tkFmtTok(v)) + '</text>';
+      '<text x="' + (padL - 7) + '" y="' + (y + 3.5) + '" text-anchor="end" font-size="9.5" fill="#5aa2e8" font-family="JetBrains Mono,monospace">' + (g === 0 ? '0' : tkFmtTok(v)) + '</text>';
   }
   const upOf = i => i === 0 ? true : vals[i] >= vals[i - 1];
   if (tkType === 'bars') {
@@ -10891,7 +10907,7 @@ function tkRenderTicker(p) {
     s += '<rect data-ti="' + i + '" x="' + X(i).toFixed(1) + '" y="' + padT + '" width="' + (plotW / N).toFixed(1) + '" height="' + plotH + '" fill="transparent"><title>' + esc(view.fmt(i)) + ': ' + v.toLocaleString() + ' tokens</title></rect>';
   });
   [0, Math.round(N / 3), Math.round(2 * N / 3), N - 1].forEach(i => {
-    s += '<text x="' + cx(i).toFixed(1) + '" y="' + (H - 8) + '" text-anchor="middle" font-size="9.5" fill="#96818c" font-family="JetBrains Mono,monospace">' + esc(view.tick(i)) + '</text>';
+    s += '<text x="' + cx(i).toFixed(1) + '" y="' + (H - 8) + '" text-anchor="middle" font-size="9.5" fill="#5aa2e8" font-family="JetBrains Mono,monospace">' + esc(view.tick(i)) + '</text>';
   });
   svg.innerHTML = s;
   host.querySelectorAll('.ticker-seg [data-ctype]').forEach(b => b.classList.toggle('active', b.dataset.ctype === tkType));
