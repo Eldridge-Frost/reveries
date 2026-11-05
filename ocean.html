@@ -4093,7 +4093,7 @@ function x126EnsureTape(){
   try{
     const comp = C(); if(!comp) return;
     if(comp.lucyTape && comp.lucyTape.text) return;
-    setTimeout(()=>{ try{ x126GenerateTape('auto'); }catch(e){} }, 2000);
+    setTimeout(()=>{ try{ x126GenerateTape('auto'); }catch(e){} }, 26000); // staggered 26s — AI calls queue one at a time
   }catch(e){}
 }
 function x126RefreshTape(){
@@ -7820,9 +7820,11 @@ async function herFastThought(){
     return true;
   }catch(e){ return false; }
 }
-/* start the fast thought loop */
+/* start the fast thought loop — delayed 10s so startup AI calls don't pile up */
 if(!_fastThoughtTimer){
-  _fastThoughtTimer = setInterval(()=>{ try{ tickFastThought(); }catch(e){} }, 2000);
+  setTimeout(()=>{
+    _fastThoughtTimer = setInterval(()=>{ try{ tickFastThought(); }catch(e){} }, 2000);
+  }, 10000);
 }
 function sendLastThoughtsToChat(){
   try{
@@ -10377,7 +10379,7 @@ function agencyTick(){
   }
 }
 setInterval(agencyTick, 60000);
-setInterval(()=>{ try{ x124ThoughtTick(); }catch(e){} }, 5000); // X.124 — Well timer polls every 5s so seconds intervals are real
+setTimeout(()=>{ setInterval(()=>{ try{ x124ThoughtTick(); }catch(e){} }, 5000); }, 15000); // X.124 — Well timer polls every 5s, starts after 15s quiet period
 setInterval(()=>{ try{ autoBackup(true); }catch(e){} }, 3600e3); // auto-backup due-check, hourly
 setInterval(()=>{ if(!document.hidden) syncNow(false); }, 5*60e3); // backup her to the PC
 function isNewerVer(a, b){
@@ -15474,9 +15476,9 @@ function init(){
   bootStep('background'); try{ paintBackground(true); }catch(e){ bootStep('background-FAILED: '+(e&&e.message||String(e))); } try{ const _bf = backfillRuns(); const _n = (_bf && _bf.added) || 0; if(_n > 0){ setTimeout(()=>{ try{ toast('📈 Restored ' + _n + ' past runs into the ticker'); }catch(e){} }, 2500); } }catch(e){}
   try{ x156SeedManuals(); }catch(e){} /* X.156 manuals seeded */ try{ x156ApplyFont(); }catch(e){} /* X.156 font scale */ try{ x124ArchiveDungeon(); }catch(e){} try{ const bc=C(); if(bc&&bc.tideReturn){bc.tideReturn=null;save();} }catch(e){}
   bootStep('tickNeeds'); try{ tickNeeds(); }catch(e){ bootStep('tickNeeds-FAILED: '+(e&&e.message||String(e))); }
-  bootStep('awayCatchup'); try{ setTimeout(()=>{ awayCatchup(); }, 2000); }catch(e){ bootStep('awayCatchup-FAILED: '+(e&&e.message||String(e))); } // replay gap AFTER boot — never blocks startup (v10.233)
-  try{ setTimeout(()=>{ x121OnlineCatchup(); }, 1500); }catch(e){} // X.121 — on-online catch-up queue
-  try{ setTimeout(()=>{ x126EnsureTape(); }, 3000); }catch(e){} // X.126 — first Lucy tape, background, never blocks boot
+  bootStep('awayCatchup'); try{ setTimeout(()=>{ awayCatchup(); }, 8000); }catch(e){ bootStep('awayCatchup-FAILED: '+(e&&e.message||String(e))); } // replay gap AFTER boot — staggered 8s so AI calls don't pile up on open
+  try{ setTimeout(()=>{ x121OnlineCatchup(); }, 14000); }catch(e){} // X.121 — on-online catch-up queue, staggered 14s
+  try{ setTimeout(()=>{ x126EnsureTape(); }, 20000); }catch(e){} // X.126 — first Lucy tape, background, staggered 20s
   bootStep('pcUpdateCheck'); try{ pcUpdateCheck(); }catch(e){ bootStep('pcUpdateCheck-FAILED: '+(e&&e.message||String(e))); } // jump to a newer ocean.html on the PC if there is one (v9.38)
   try{ autoBackup(true); }catch(e){} // auto-backup if the schedule is due
   bootStep('syncNow'); try{ syncNow(false); }catch(e){ bootStep('syncNow-FAILED: '+(e&&e.message||String(e))); } // merge with the PC backup (v9.39)
@@ -15938,7 +15940,7 @@ $('setAfterglow').oninput = e=>{ $('afterglowVal').textContent = e.target.value;
     localStorage.removeItem(LS_KEY); location.reload();
   };
   bootStep('snapshotNeeds'); try{ snapshotNeeds(); }catch(e){ bootStep('snapshotNeeds-FAILED: '+(e&&e.message||String(e))); }
-  bootStep('awayCatchup-2'); try{ setTimeout(()=>{ awayCatchup(); }, 3000); }catch(e){ bootStep('awayCatchup2-FAILED: '+e.message); }
+  bootStep('awayCatchup-2'); try{ setTimeout(()=>{ awayCatchup(); }, 11000); }catch(e){ bootStep('awayCatchup2-FAILED: '+e.message); } // staggered 11s
   bootStep('refreshTelemetry'); try{ refreshTelemetry(); }catch(e){ bootStep('refreshTelemetry-FAILED: '+(e&&e.message||String(e))); }
   try{ voiceMaybePreload(); }catch(e){} // v10.21 — warm her voice if already downloaded
   bootStep('pre-boot-flag');
