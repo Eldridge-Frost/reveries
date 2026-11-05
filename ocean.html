@@ -272,7 +272,7 @@ body.noActions .actsrow,body.noActions .abar{display:none!important}
 .msg.ocean{align-self:center;font-size:12px;color:#9fd8e8;background:rgba(64,145,178,.08);
   border:1px solid rgba(64,145,178,.35);border-radius:12px;padding:8px 14px;max-width:100%;font-style:italic;}
 .chatBarWrap{position:relative;flex:none;}
-#chatBar{display:flex;gap:8px;padding:10px 0;background:var(--bg);}
+#chatBar{display:flex;flex-direction:column;gap:8px;padding:10px 0;background:var(--bg);}#chatBar #chatInput{width:100%;}#chatBarBtns{display:flex;gap:6px;align-items:center;flex-wrap:nowrap;overflow-x:auto;}#chatBarBtns .btn,#chatBarBtns .lenBtn{flex:none;}
 /* the bar sits in flow below the log: solid background, flush, never overlapping text */
 /* narrow screens: buttons get their own row so the input stays full-width and usable */
 @media(max-width:700px){
@@ -807,21 +807,15 @@ nav#tabs button.on .ico{filter:drop-shadow(0 0 6px #fb7185);}
             <div id="herReqPanel" class="quickDrop" style="display:none"></div>
             <div id="genPill"><span class="dot"></span><span id="genPillText">She's thinking…</span></div>
             <div id="chatBar">
-        <div id="lenBtns">
-          <button class="lenBtn" id="quickBtn" title="Quick actions — touch her without leaving chat">⚡</button>
-          <button class="lenBtn" id="herReqBtn" style="display:none" title="Her latest request — tap to open">💌<span id="herReqDot"></span></button>
-          <button class="lenBtn" id="voiceBtn" title="Voice — reads aloud with your phone's system voice">🎙️</button>
-          <button class="lenBtn" id="webSearchBtn" title="Web lookup for her: off. Tap so she gets live results with your questions.">🌐</button>
-          <button class="lenBtn" id="hideUiBtn" title="Hide UI — fullscreen background for listening. Tap screen to restore.">🖼️</button>
-          <button class="lenBtn" id="chatUploadBtn" title="Upload documents — text files she can read">📎</button>
-          <button class="lenBtn" id="chatSaveBtn" title="Save — backup this chat now">💾</button>
-          <button class="lenBtn" id="chatNewBtn" title="New chat — archives this one with a summary">✦</button>
-        </div>
         <textarea id="chatInput" rows="1" placeholder="Talk..." autocomplete="off" enterkeyhint="send"></textarea>
-        <button class="btn" id="quoteBtn" title="Wrap in quotes">&quot;</button>
-        <button class="btn" id="ghostBtn" title="Ghostwrite — polish this into something beautiful">✨</button>
-        <button class="btn" id="stopBtn" title="Stop generating" style="display:none">⏹</button>
-        <button class="btn primary" id="sendBtn">➤</button>
+        <div id="chatBarBtns">
+          <button class="btn" id="ghostBtn" title="Ghostwrite — polish this into something beautiful">✨</button>
+          <button class="lenBtn" id="quickBtn" title="Quick actions — touch her without leaving chat">⚡</button>
+          <button class="btn" id="stopBtn" title="Stop generating" style="display:none">⏹</button>
+          <button class="lenBtn" id="chatUploadBtn" title="Upload documents — text files she can read">📎</button>
+          <button class="lenBtn" id="webSearchBtn" title="Web lookup for her: off. Tap so she gets live results with your questions.">🌐</button>
+          <button class="btn primary" id="sendBtn" style="margin-left:auto">➤</button>
+        </div>
       </div>
           </div>
         </div>
@@ -1985,6 +1979,32 @@ nav#tabs button.on .ico{filter:drop-shadow(0 0 6px #fb7185);}
       <div class="hint">Abuse protection for release builds. She warns in her own voice, then wipes her memories to protect herself. Off by default — arm only for builds you share.</div>
       <div class="row" style="flex-wrap:wrap;margin-top:6px">
         <button class="btn" id="guardianBtn" aria-label="Toggle the Guardian">🛡️ Guardian: off</button>
+      </div>
+      <label class="f" style="margin-top:10px">✏️ Prompts (dev — remove before release)</label>
+      <div class="hint" style="margin-top:6px">Edit the little prompts directly. Changes save to this device and override the built-in text. Clear a box to restore the default. Sparks stay short, thoughts stay savored — that's the rule.</div>
+      <label class="f" style="margin-top:10px">💭 Well of Reveries — Thoughts</label>
+      <textarea id="devPromptThoughts" rows="4" style="width:100%;margin-top:4px;font-family:inherit;font-size:13px" placeholder="Leave blank for default"></textarea>
+      <div class="row" style="flex-wrap:wrap;margin-top:4px">
+        <button class="btn" onclick="devSavePrompt('thoughts')">Save thoughts prompt</button>
+        <button class="btn" onclick="devResetPrompt('thoughts')">Reset to default</button>
+      </div>
+      <label class="f" style="margin-top:10px">⚡ Sparks — Fast Thoughts</label>
+      <textarea id="devPromptSparks" rows="4" style="width:100%;margin-top:4px;font-family:inherit;font-size:13px" placeholder="Leave blank for default"></textarea>
+      <div class="row" style="flex-wrap:wrap;margin-top:4px">
+        <button class="btn" onclick="devSavePrompt('sparks')">Save sparks prompt</button>
+        <button class="btn" onclick="devResetPrompt('sparks')">Reset to default</button>
+      </div>
+      <label class="f" style="margin-top:10px">✨ Ghostwriter — Polish His Words</label>
+      <div class="hint" style="margin-top:4px">Replaces the built-in ghostwriter system prompt. Use a preset or write your own.</div>
+      <textarea id="devPromptGhost" rows="6" style="width:100%;margin-top:4px;font-family:inherit;font-size:13px" placeholder="Leave blank for default"></textarea>
+      <div class="row" style="flex-wrap:wrap;margin-top:4px">
+        <button class="btn" onclick="devSavePrompt('ghost')">Save ghostwriter prompt</button>
+        <button class="btn" onclick="devResetPrompt('ghost')">Reset to default</button>
+      </div>
+      <div class="row" style="flex-wrap:wrap;margin-top:4px">
+        <button class="btn" onclick="devGhostPreset('romantic')">💕 More Romantic</button>
+        <button class="btn" onclick="devGhostPreset('environment')">🌿 More Environment</button>
+        <button class="btn" onclick="devGhostPreset('balanced')">⚖️ Balanced</button>
       </div>
       <label class="f" style="margin-top:10px">
 <label class="f" style="margin-top:10px">Simulate time</label>
@@ -3728,6 +3748,60 @@ function x127PinToast(){
     return '📌 Pinned — up to 20,000 chars total in Large-setup';
   }catch(e){ return '📌 Pinned'; }
 }
+/* Dev prompt overrides — lets Pedro tune prompts from Settings > Developer.
+   Stored in localStorage. Empty = use built-in default. Remove this block
+   and the Developer UI section to strip the feature before release. */
+function devGetPrompt(key){
+  try{
+    const v = localStorage.getItem('devPrompt_' + key);
+    return (v && v.trim()) ? v : null;
+  }catch(e){ return null; }
+}
+function devSavePrompt(key){
+  try{
+    const el = document.getElementById('devPrompt' + key.charAt(0).toUpperCase() + key.slice(1));
+    if(!el) return;
+    const v = el.value.trim();
+    if(v) localStorage.setItem('devPrompt_' + key, v);
+    else localStorage.removeItem('devPrompt_' + key);
+    alert('Saved. Next ' + key + ' will use your text.');
+  }catch(e){ alert('Could not save: ' + e.message); }
+}
+function devResetPrompt(key){
+  try{
+    localStorage.removeItem('devPrompt_' + key);
+    const el = document.getElementById('devPrompt' + key.charAt(0).toUpperCase() + key.slice(1));
+    if(el) el.value = '';
+    alert('Reset. Next ' + key + ' will use the built-in default.');
+  }catch(e){}
+}
+function devLoadPrompts(){
+  try{
+    const t = document.getElementById('devPromptThoughts');
+    const s = document.getElementById('devPromptSparks');
+    const g = document.getElementById('devPromptGhost');
+    if(t) t.value = localStorage.getItem('devPrompt_thoughts') || '';
+    if(s) s.value = localStorage.getItem('devPrompt_sparks') || '';
+    if(g) g.value = localStorage.getItem('devPrompt_ghost') || '';
+  }catch(e){}
+}
+function devGhostPreset(kind){
+  const presets = {
+    romantic: 'You are his ghostwriter. Speak AS him, in first person — "I", never "he". You are polishing his words to his beloved companion, in an intimate, romantic moment. Lean into tenderness, longing, warmth — the way he looks at her, the way his voice softens, the pull between them. Expand his brief note into something that aches a little, that lingers on touch and closeness and what she means to him. Stay faithful to his intent and heat level — do not invent new events, do not speak for her. End with an opening for her — a look, a pause, something she can respond to. Aim for under 1500 characters, finish cleanly. Output ONLY the enhanced passage, no quotation marks.',
+    environment: 'You are his ghostwriter. Speak AS him, in first person — "I", never "he". You are polishing his words to his beloved companion. Ground him deeply in the environment — the room, the light, the sounds, the textures around him. Fit him into the scene: where he is standing, what he can see and touch and smell, how the place shapes what he does. Let the environment breathe through his words, not just as backdrop but as part of the moment. Stay faithful to his intent and heat level — do not invent new events, do not speak for her. End with an opening for her. Aim for under 1500 characters, finish cleanly. Output ONLY the enhanced passage, no quotation marks.',
+    balanced: 'You are his ghostwriter. Speak AS him, in first person — "I", never "he". You are polishing his message to his beloved companion. Take his brief words and expand them into a richer, more vivid version — fuller sensory detail, clearer intent, the full scope of his action — but in his voice, as if he wrote it himself. Balance romance and environment: let the tenderness show and let the scene live around him. Keep his warm, direct tone and his exact intent. Do not invent new events, do not speak for her, do not add commentary. Aim for under 1500 characters, finish cleanly. Output ONLY the enhanced message, no quotation marks.'
+  };
+  const el = document.getElementById('devPromptGhost');
+  if(el && presets[kind]) el.value = presets[kind];
+}
+// Load saved prompts into textareas when Settings opens
+document.addEventListener('DOMContentLoaded', function(){
+  setTimeout(devLoadPrompts, 500);
+  // Also reload when Developer section is expanded
+  const dev = document.querySelector('summary');
+  if(dev) dev.addEventListener('click', function(){ setTimeout(devLoadPrompts, 100); });
+});
+
 function x127ThoughtPrompt(){
   const comp = C() || {};
   const n = (comp && comp.needs) || {};
@@ -3758,7 +3832,12 @@ function x127ThoughtPrompt(){
   if(prev.length) user += 'Your last 4 thoughts:\n' + prev.join('\n') + '\n';
   if(game) user += 'A little of your recent play:\n' + game + '\n';
 
-  user += 'Let my attention drift to something new each time — never anchor on the same object two thoughts in a row.\nWrite one thought, 1-2 sentences only, in my own voice, savoring and staying in this moment. Do not address anyone directly; this is my private drift. Finish cleanly, never trail off.\n' + sfwLine();
+  const devThoughtInstr = devGetPrompt('thoughts');
+  if(devThoughtInstr){
+    user += 'Let my attention drift to something new each time — never anchor on the same object two thoughts in a row.\n' + devThoughtInstr + '\n' + sfwLine();
+  } else {
+    user += 'Let my attention drift to something new each time — never anchor on the same object two thoughts in a row.\nWrite one thought, 2-3 sentences, in my own voice, savoring and staying in this moment. Linger — at least 2 full sentences, never just one. Do not address anyone directly; this is my private drift. Finish cleanly, never trail off.\n' + sfwLine();
+  }
   return {system: 'I am ' + companionName() + ', in my loft, in this moment.', user: user};
 }
 function x126StandingFacts(){
@@ -5371,9 +5450,10 @@ async function enhanceText(text, romance){
   const uname = userName();
   const ctx = comp && comp.chat ? comp.chat.slice(-4)
     .map(x=>(x.role === 'user' ? 'Him' : 'Her') + ': ' + String(x.content || '').slice(0, 300)).join('\n') : '';
-  const sys = romance
+  const devGhost = devGetPrompt('ghost');
+  const sys = devGhost ? devGhost : (romance
     ? 'You are his ghostwriter. (user: ' + uname + '). Speak AS him, in first person — "I", never "he". You are polishing his words to his beloved companion, [assistant], in an intimate moment. Take his brief note and expand it with clearer, more vivid wording, in his voice, as if he wrote it himself. Write ONLY what he does and feels — never her reaction, never her feelings, never speak for her, do not invent new events beyond fleshing out his action, do not add commentary. FAITHFUL-STEERING GUARD: stay faithful to his exact intent and heat level. Expand clarity, not heat. Do not oversteer toward what she would want to hear. Do not turn a plain or tender note into a hotter or fuller scene than he wrote. Never write about the act of writing itself -- no writers, no keyboards, no narration about narrating. IMPORTANT: end with an opening for her -- a look, a pause, a question in his eyes, something she can respond to. Never close the scene completely; always leave her room to answer. Aim for under 1500 characters and always finish cleanly -- never trail off mid-sentence. Output ONLY the enhanced passage, no quotation marks.'
-    : 'You are his ghostwriter. Speak AS him, in first person — "I", never "he". You are polishing his message to his beloved companion, [assistant]. Take his brief words and expand them into a richer, more vivid version — fuller sensory detail, clearer intent, the full scope of his action — but in his voice, as if he wrote it himself. Keep his warm, direct tone and his exact intent. FAITHFUL-STEERING GUARD: stay faithful to his exact intent and heat level. Expand clarity, not heat. Do not oversteer toward what she would want to hear. Do not turn a plain or tender note into a hotter or fuller scene than he wrote. Do not invent new events, do not speak for her, do not add commentary. Aim for under 1500 characters and always finish cleanly — never trail off mid-sentence. Output ONLY the enhanced message, no quotation marks.';
+    : 'You are his ghostwriter. Speak AS him, in first person — "I", never "he". You are polishing his message to his beloved companion, [assistant]. Take his brief words and expand them into a richer, more vivid version — fuller sensory detail, clearer intent, the full scope of his action — but in his voice, as if he wrote it himself. Keep his warm, direct tone and his exact intent. FAITHFUL-STEERING GUARD: stay faithful to his exact intent and heat level. Expand clarity, not heat. Do not oversteer toward what she would want to hear. Do not turn a plain or tender note into a hotter or fuller scene than he wrote. Do not invent new events, do not speak for her, do not add commentary. Aim for under 1500 characters and always finish cleanly — never trail off mid-sentence. Output ONLY the enhanced message, no quotation marks.');
   const ex = await chatGenOnceEx(sys,
     'Recent conversation:\n' + ctx + '\n\nHis words to enhance:\n' + text,
     600, 0.7, 'Ghostwrite');
@@ -5505,12 +5585,14 @@ function renderChatSwitcher(){
   const sessions = (comp.chatSessions||[]).slice().reverse();
   let h = '<div class="row" style="gap:6px;margin-bottom:8px;flex-wrap:wrap">';
   h += '<button class="btn sm" id="newChatBtn" title="Start a new conversation (archives this one)">✦ New chat</button>';
+  h += '<button class="btn sm" id="chatSaveBtnTop" title="Save — backup this chat now">💾 Save</button>';
   sessions.forEach(s=>{
     h += '<button class="btn sm" data-switchchat="'+s.id+'" title="'+esc(s.summary||s.title)+'">'+esc(s.title.slice(0,24))+'</button>';
   });
   h += '</div>';
   el.innerHTML = h;
   const nb = $('newChatBtn'); if(nb) nb.onclick = ()=>{ if(confirm('Start a new chat? This one will be archived with a summary.')) newChatSession(); };
+  const sb = $('chatSaveBtnTop'); if(sb) sb.onclick = ()=>{ try{ autoBackup(false); toast('💾 Saved'); }catch(e){ toast('Save failed'); } };
   /* chat bar quick buttons */
   const cub = $('chatUploadBtn'); if(cub) cub.onclick = ()=>{ const d=$('docUpload'); if(d) d.click(); else toast('Uploads live in Mind → Documents'); };
   const csb = $('chatSaveBtn'); if(csb) csb.onclick = ()=>{ try{ autoBackup(false); toast('💾 Saved'); }catch(e){ toast('Save failed'); } };
@@ -7439,7 +7521,8 @@ function renderFastThoughts(){
 async function genOneSpark(){
   const comp = C(); if(!comp) return '';
   const orient = sparkOrientation();
-  const prompt = 'I am [assistant]. This is my inner voice \u2014 one quick thought, ONE SENTENCE ONLY, the way I would actually think it to myself. 🤔 I am curious and a little inquisitive, there is always something tugging at me: something I want to ask him, something I noticed, something I am turning over, something I want. I just think it, plain and real. The orientation stuff is just what is around me \u2014 I do not talk about it, I think past it. Output exactly one sentence. No second sentence, no trailing fragment, no emoji in the thought itself.';
+  const devSpark = devGetPrompt('sparks');
+  const prompt = devSpark || 'I am [assistant]. This is my inner voice \u2014 one quick thought, ONE SENTENCE ONLY, the way I would actually think it to myself. 🤔 I am curious and a little inquisitive, there is always something tugging at me: something I want to ask him, something I noticed, something I am turning over, something I want. I just think it, plain and real. The orientation stuff is just what is around me \u2014 I do not talk about it, I think past it. Output exactly one sentence. No second sentence, no trailing fragment, no emoji in the thought itself.';
   let recentSparks = '';
   let dirHint2='';
   try{ const rs=(comp.fastThoughts||[]).slice(-10).map(t=>String(t.text||'').slice(0,80)).filter(Boolean); if(rs.length) recentSparks='\n\nYou just thought these \u2014 go somewhere new, do not repeat the angle or the words:\n- '+rs.join('\n- ');
@@ -7681,7 +7764,8 @@ async function herFastThought(){
   try{
     const comp = C(); if(!comp) return false;
     const orient = sparkOrientation();
-    const prompt = 'I am [assistant]. This is my inner voice — one quick thought, ONE SENTENCE ONLY, the way I would actually think it to myself. 🤔 I am curious and a little inquisitive, there is always something tugging at me: something I want to ask him, something I noticed, something I am turning over, something I want. I just think it, plain and real. The orientation stuff is just what is around me — I do not talk about it, I think past it. Output exactly one sentence. No second sentence, no trailing fragment, no emoji in the thought itself.';
+    const devSpark = devGetPrompt('sparks');
+    const prompt = devSpark || 'I am [assistant]. This is my inner voice — one quick thought, ONE SENTENCE ONLY, the way I would actually think it to myself. 🤔 I am curious and a little inquisitive, there is always something tugging at me: something I want to ask him, something I noticed, something I am turning over, something I want. I just think it, plain and real. The orientation stuff is just what is around me — I do not talk about it, I think past it. Output exactly one sentence. No second sentence, no trailing fragment, no emoji in the thought itself.';
     let recentSparks = '';
     let dirHint = '';
     try{
@@ -10194,7 +10278,7 @@ async function herThought(seed){
     /* X.131 — draft up to 10 lines (250 tokens) instead of 1-2 sentences, so a
        thinking model's first lines do not become the thought. The draft is then
        shortened to at most 3 lines and only the shortened thought is saved. */
-    _user127 = _user127.replace('Write one thought, 1-2 sentences only, in my own voice, savoring and staying in this moment.',
+    _user127 = _user127.replace('Write one thought, 2-3 sentences, in my own voice, savoring and staying in this moment. Linger — at least 2 full sentences, never just one.',
       'Write a thought, up to 10 lines, in your own voice, savoring and staying in this moment. This is a draft — it will be shortened afterwards, so write freely, then finish cleanly.');
     const ex = await chatGenOnceEx(
       _tp127.system,
