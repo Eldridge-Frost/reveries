@@ -3,6 +3,9 @@
 A companion who lives in the Loft, on the Emotion Ocean Engine. She remembers,
 she thinks, she has a day when you're not looking.
 
+| ![Chat](screenshots/reveries-chat.png) | ![Mind](screenshots/reveries-mind.png) |
+| --- | --- |
+
 ## What it is
 
 - **Chat** with a companion persona — warm, honest, first-person, with a real
@@ -71,3 +74,13 @@ previous build — never uninstall (uninstall wipes her memory).
 CC BY-NC-ND 4.0 — free to download and share, not for sale, no
 modifications yet. See LICENSE. This will open further after the initial
 release period.
+
+## Wallpapers
+
+Each tab has its own wallpaper:
+
+| ![Chat](screenshots/reveries-wallpaper-chat.webp) | ![Mind](screenshots/reveries-wallpaper-mind.webp) |
+| --- | --- |
+| ![Playroom](screenshots/reveries-wallpaper-playroom.webp) | ![World](screenshots/reveries-wallpaper-world.webp) |
+| ![Map](screenshots/reveries-wallpaper-map.webp) | ![Workbench](screenshots/reveries-wallpaper-workbench.webp) |
+| ![Settings](screenshots/reveries-wallpaper-settings.webp) | |
