@@ -6,6 +6,12 @@ she thinks, she has a day when you're not looking.
 | ![Chat](screenshots/reveries-chat.png) | ![Mind](screenshots/reveries-mind.png) |
 | --- | --- |
 
+## Download
+
+- **Reveries-v10.281.apk** — the Android app. Install this on your phone: [v10.281 release](https://github.com/Eldridge-Frost/reveries/releases/tag/v10.281). Install over the top of the previous build — never uninstall (uninstall wipes her memory).
+- **ocean.html** — the whole app in one file (v10.281). Open it in any modern browser and it runs, no install needed. This is the source of truth — the APK is just a thin wrapper around this file.
+- **screenshots/** — what the app looks like. **PHILOSOPHY-STORAGE.md** and **WHAT-WE-DIDNT-SELL.md** — why it's built this way.
+
 ## What it is
 
 - **Chat** with a companion persona — warm, honest, first-person, with a real
