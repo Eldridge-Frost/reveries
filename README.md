@@ -6,6 +6,10 @@ she thinks, she has a day when you're not looking.
 | ![Chat](screenshots/reveries-chat.png) | ![Mind](screenshots/reveries-mind.png) |
 | --- | --- |
 
+## Support
+
+Reveries and WiseGuy are free and stay free — no subscription, no account, no cloud in the middle. If you can afford to give, it goes straight to finishing them: [Help finish WiseGuy & Reveries — GoFundMe](https://gofund.me/53cd59720)
+
 ## Download
 
 - **Reveries-v10.281.apk** — the Android app. Install this on your phone: [v10.281 release](https://github.com/Eldridge-Frost/reveries/releases/tag/v10.281). Install over the top of the previous build — never uninstall (uninstall wipes her memory).
