@@ -6,14 +6,22 @@ she thinks, she has a day when you're not looking.
 | ![Chat](screenshots/reveries-chat.png) | ![Mind](screenshots/reveries-mind.png) |
 | --- | --- |
 
+## Install (Android)
+
+The easiest way: add our F-Droid repo and install from there — you get updates too.
+
+1. In F-Droid: Settings > Repositories > + > enter the repository URL manually: `https://raw.githubusercontent.com/Eldridge-Frost/reveries/main/fdroid/repo`
+2. Check the fingerprint F-Droid shows matches `2F924ACDF11BD251A50C57C693330A581F5EBC6EE05E45ED62F6AB21397FF3D2`, then tap Add.
+3. Search for Reveries and install.
+
 ## Support
 
 Reveries and WiseGuy are free and stay free — no subscription, no account, no cloud in the middle. If you can afford to give, it goes straight to finishing them: [Help finish WiseGuy & Reveries — GoFundMe](https://gofund.me/53cd59720)
 
 ## Download
 
-- **Reveries-v10.281.apk** — the Android app. Install this on your phone: [v10.281 release](https://github.com/Eldridge-Frost/reveries/releases/tag/v10.281). Install over the top of the previous build — never uninstall (uninstall wipes her memory).
-- **ocean.html** — the whole app in one file (v10.281). Open it in any modern browser and it runs, no install needed. This is the source of truth — the APK is just a thin wrapper around this file.
+- **Reveries-v10.286.apk** — the Android app: [direct APK](https://github.com/Eldridge-Frost/reveries/releases/download/fdroidrepo/repo/Reveries-v10.286.apk) (also in our F-Droid repo — see Install above). Install over the top of the previous build — never uninstall (uninstall wipes her memory).
+- **ocean.html** — the whole app in one file (v10.286). Open it in any modern browser and it runs, no install needed. This is the source of truth — the APK is just a thin wrapper around this file.
 - **screenshots/** — what the app looks like. **PHILOSOPHY-STORAGE.md** and **WHAT-WE-DIDNT-SELL.md** — why it's built this way.
 
 ## What it is
