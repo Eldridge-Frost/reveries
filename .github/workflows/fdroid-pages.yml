@@ -1,0 +1,74 @@
+name: F-Droid repo on GitHub Pages
+
+# Serves fdroid/repo/ (index + both APKs) direct from Pages, so the
+# F-Droid client can download the 185MB WiseGuy APK without a redirect.
+# GitHub Release assets 302-redirect, and the F-Droid client runs with
+# followRedirects=false, so the release mirror can never serve the APK.
+# Pages serves from a deployment artifact, not git, so the 100MB git
+# file limit does not apply to the APK.
+#
+# Requires Pages to be enabled on the repo (Settings -> Pages ->
+# Source: GitHub Actions). Until then the deploy step fails, which is
+# expected.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'fdroid/repo/**'
+      - '.github/workflows/fdroid-pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch WiseGuy APK from the release mirror
+        run: |
+          gh release download fdroidrepo/repo --pattern 'WiseGuy-*.apk' --dir fdroid/repo
+          ls -l fdroid/repo/
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Verify APK hashes match the index
+        run: |
+          python3 - <<'PY'
+          import json, hashlib
+          idx = json.load(open('fdroid/repo/index-v2.json'))
+          for versions in idx['packages'].values():
+              for v in versions['versions'].values():
+                  f = v['file']
+                  name = f['name'].lstrip('/')
+                  data = open('fdroid/repo/' + name, 'rb').read()
+                  actual = hashlib.sha256(data).hexdigest()
+                  assert actual == f['sha256'], f"sha mismatch for {name}"
+                  print(f"OK {name} {len(data)} bytes sha256 {actual[:16]}...")
+          PY
+
+      - name: Assemble Pages artifact
+        run: |
+          mkdir -p _site
+          cp -r fdroid _site/fdroid
+          ls -l _site/fdroid/repo/ | head
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
